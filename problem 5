@@ -1,0 +1,29 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+      long long n,k;
+      cin>>n>>k;
+      
+    //   vector<long long>a(n);
+      vector<pair<long long,int>>vec;
+      for(int i=0;i<n;i++){
+        long long x;
+        cin>>x;
+        x=x%k;
+        if(x==0) x=k;
+        vec.push_back({x,i+1});
+      }
+      sort(vec.begin(),vec.end(),[](auto &a,auto &b){
+        if(a.first==b.first) return a.second<b.second;
+        return a.first>b.first;
+      });
+      for(auto &v:vec){
+        cout<<v.second<<" ";
+      }
+      cout<<endl;
+    }
+}
