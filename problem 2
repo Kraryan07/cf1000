@@ -1,0 +1,37 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+      int n,k;
+      cin>>n>>k;
+     
+      vector<int>a(n);
+      for(int i=0;i<n;i++){
+        cin>>a[i];
+      }
+      int maxmod=INT_MAX;
+      int evenc=0;
+      for(int i=0;i<n;i++){
+        if((a[i]%k)==0){
+            maxmod=0;
+            break;
+        }
+        else{
+            maxmod=min(maxmod,k-a[i]%k);
+        }
+
+        if(k==4 && a[i]%2==0){
+            evenc++;
+        }
+      }
+      if(k==4) {
+        if(evenc>=2) cout<<0<<endl;
+        else if(evenc==1) cout<<min(maxmod,1)<<endl;
+        else cout<<min(maxmod,2)<<endl;
+      }
+      else cout<<maxmod<<endl;
+    }
+}
