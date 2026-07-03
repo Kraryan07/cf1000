@@ -1,0 +1,41 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+       long long n;
+       cin>>n;
+      
+       string s;
+       cin>>s;
+
+      vector<int>freqa(26,0),freqb(26,0);
+      int disa=0,disb=0;
+
+     for(int i=0;i<n;i++){
+        int idx=s[i]-'a';
+        if(freqa[idx]==0){
+            disa++;
+        }
+        freqa[idx]++;
+     }
+     int max_dist=0;
+     for(int i=0;i<n;i++){
+       int idx=s[i]-'a';
+       if(freqb[idx]==0){
+        disb++;
+       }
+       freqb[idx]++;
+       freqa[idx]--;
+
+       if(freqa[idx]==0){
+         disa--;
+       }
+
+       max_dist=max(max_dist,disa+disb);
+     }
+    cout<<max_dist<<endl;
+    }
+}
